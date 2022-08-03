@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should be rendered correctly disabled 1`] = `
+<DocumentFragment>
+  <button
+    class="button button-primary"
+    disabled=""
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;

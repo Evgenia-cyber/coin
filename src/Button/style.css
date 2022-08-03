@@ -1,0 +1,13 @@
+.button {
+  padding: 0.5rem 2rem;
+  color: #ffffff;
+  border: none;
+}
+
+.button-primary {
+  background-color: #008cff;
+}
+
+.button-success {
+  background-color: #00ff00;
+}

@@ -1,4 +1,5 @@
 {
+  "name": "cyber-coin",
   "version": "0.0.0-development",
   "license": "MIT",
   "main": "dist/index.js",
@@ -34,9 +35,9 @@
     "printWidth": 80,
     "semi": true,
     "singleQuote": true,
-    "trailingComma": "es5"
+    "trailingComma": "es5",
+    "endOfLine": "auto"
   },
-  "name": "cyber-coin",
   "author": "Evgenia-cyber",
   "module": "dist/coin.esm.js",
   "size-limit": [

@@ -50,6 +50,9 @@
       "limit": "10 KB"
     }
   ],
+  "release": {
+    "branches": ["main", "next"]
+  },
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@size-limit/preset-small-lib": "^8.0.0",

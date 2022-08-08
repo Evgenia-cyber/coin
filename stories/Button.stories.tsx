@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 // local imports
-import Button, { Props } from '../src/Button/Button';
+import Button, { Props } from '../src/components/Button/Button';
 
 const meta: Meta = {
   title: 'Button',

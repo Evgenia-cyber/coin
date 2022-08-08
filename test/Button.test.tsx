@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 // local import
-import Button from '../src/Button/Button';
+import Button from '../src/components/Button/Button';
 
 describe('Button', () => {
   describe('should be rendered correctly', () => {

@@ -1,0 +1,150 @@
+/* ***** variables ***** */
+:root {
+  --coin-diameter: 100px;
+}
+
+.coin {
+  --gradient: linear-gradient(gold 0%, rgb(235, 199, 0) 100% 50%, gold 100%);
+  --animation-duration: 0.5s;
+  --animation-count: 2;
+  --animation-function: linear;
+
+  --thickness: calc(var(--coin-diameter) * 0.1);
+  --front-transform: calc(var(--thickness) / 2);
+  --back-transform: calc(0px - var(--thickness) / 2);
+  --edge-transformX: calc(var(--coin-diameter) / 2);
+  --edge-transformZ: calc(var(--thickness) / 2);
+  --font-size: calc(var(--coin-diameter) * 0.6);
+  --border-size: calc(var(--coin-diameter) / 30);
+  --coin-border: var(--border-size) solid rgba(228, 194, 1, 0.5);
+
+  --shine-left: calc(var(--coin-diameter) / 2 * -1);
+  --shine-height: calc(var(--coin-diameter) / 1.5);
+  --shine-width: calc(var(--coin-diameter) * 2);
+  --shine-negative: calc(var(--coin-diameter) * -1);
+  --shine-delay: calc(
+    var(--animation-duration) * var(--animation-count) + 0.2s
+  );
+
+  /* ***** styles ***** */
+  box-sizing: border-box;
+  position: relative;
+  width: var(--coin-diameter);
+  height: var(--coin-diameter);
+  transform-style: preserve-3d;
+  animation: none;
+}
+
+.coin__anim {
+  animation: spin var(--animation-duration);
+  animation-timing-function: var(--animation-function);
+  animation-iteration-count: var(--animation-count);
+}
+
+.side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: gold;
+  color: rgb(214, 186, 26);
+  border: var(--coin-border);
+  font-size: var(--font-size);
+  font-weight: bold;
+}
+
+.side__front {
+  transform: translateZ(var(--front-transform));
+  animation: none;
+}
+
+.front__anim {
+  animation: flip-front var(--animation-duration);
+  animation-timing-function: var(--animation-function);
+  animation: none;
+}
+
+.front__anim:after {
+  content: '';
+  position: absolute;
+  left: var(--shine-left);
+  bottom: 100%;
+  display: block;
+  height: var(--shine-height);
+  width: var(--shine-width);
+  animation: shine 1s;
+  animation-timing-function: var(--animation-function);
+  animation-delay: var(--shine-delay);
+}
+
+.side__back {
+  transform: translateZ(var(--back-transform)) rotateY(180deg);
+}
+
+.back__anim {
+  animation: flip-back var(--animation-duration);
+  animation-timing-function: var(--animation-function);
+}
+
+.edge {
+  position: absolute;
+  width: var(--thickness);
+  height: 100%;
+  background-color: gold;
+  background-image: var(--gradient);
+  border-top: var(--coin-border);
+  border-bottom: var(--coin-border);
+  transform: translateX(var(--edge-transformX))
+    translateZ(var(--edge-transformZ)) rotateY(90deg);
+  transform-origin: 0 0;
+}
+
+/* ***** animation ***** */
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes flip-back {
+  0% {
+    background-image: var(--gradient);
+  }
+  50% {
+    background-image: none;
+  }
+  100% {
+    background-image: var(--gradient);
+  }
+}
+
+@keyframes flip-front {
+  0% {
+    background-image: none;
+  }
+  50% {
+    background-image: var(--gradient);
+  }
+  100% {
+    background-image: none;
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateY(var(--shine-width)) rotate(-40deg);
+    background: #ffffff;
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(var(--shine-negative)) rotate(-40deg);
+    background: transparent;
+    opacity: 0;
+  }
+}

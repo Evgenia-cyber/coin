@@ -1,0 +1,7 @@
+import { POSITIONS, SIDES } from './types';
+
+const COIN = [SIDES.HEAD, SIDES.TAIL];
+const HEAD = [POSITIONS.FRONT, POSITIONS.BACK];
+const TAIL = [POSITIONS.BACK, POSITIONS.FRONT];
+
+export { COIN, HEAD, TAIL };

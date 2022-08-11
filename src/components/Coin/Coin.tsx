@@ -10,7 +10,7 @@ import './style.css';
 export interface Props {
   isHead: boolean;
   isAnimation: boolean;
-  animationEndHandler: () => void;
+  animationEndHandler?: () => void;
   diameter?: number;
 }
 const Coin: FC<Props> = ({
@@ -33,8 +33,7 @@ const Coin: FC<Props> = ({
   const classNames = isAnimation ? 'coin coin__anim' : 'coin';
 
   const animationHandler = (event: React.AnimationEvent<HTMLDivElement>) => {
-    console.log('event', event.animationName);
-    if (event.animationName === 'shine') {
+    if (animationEndHandler && event.animationName === 'shine') {
       animationEndHandler();
     }
   };

@@ -179,3 +179,100 @@ Change the `alias` to point to where those packages are actually installed. This
 ```
 
 An alternative to fixing this problem would be to remove aliases altogether and define the dependencies referenced as aliases as dev dependencies instead. [However, that might cause other problems.](https://github.com/palmerhq/tsdx/issues/64)
+
+## Installation
+
+**npm:**
+
+```sh
+npm install cyber-coin
+```
+
+**yarn:**
+
+```sh
+yarn add cyber-coin
+```
+
+### < Coin /> props
+
+| Name                |   Type   | Prop type | Default | Description                                             |
+| ------------------- | :------: | :-------: | :-----: | ------------------------------------------------------- |
+| isHead              | required |  boolean  |    -    | Flag indicating head or tail                            |
+| isAnimation         | required |  boolean  |    -    | Animation control flag                                  |
+| animationEndHandler | optional | function  |    -    | Callback that will be executed when the animation ends. |
+| diameter            | optional |  number   |   100   | Coin diameter in px                                     |
+
+## Demo
+
+https://evgenia-cyber.github.io/coin
+
+## Examples
+
+### Coin without animation
+
+```js
+import React from 'react';
+import { Coin } from 'cyber-coin';
+
+const Component = () => <Coin isHead={true} isAnimation={false} />;
+
+export default Component;
+```
+
+### Coin without animation with Typescript
+
+```js
+import React, { FC } from 'react';
+import { Coin } from 'cyber-coin';
+
+const Component: FC = () => <Coin isHead={true} isAnimation={false} />;
+
+export default Component;
+```
+
+### Custom size
+
+```js
+import React from 'react';
+import { Coin } from 'cyber-coin';
+
+const Component = () => <Coin isHead={true} isAnimation={false} size={50} />;
+
+export default Component;
+```
+
+### Coin with animation
+
+```js
+import React from 'react';
+import { Coin } from 'cyber-coin';
+
+const Component = () => {
+  const [isAnim, setIsAnim] = React.useState(false);
+
+  const clickHandler = () => {
+    setIsAnim(true);
+  };
+
+  const animationEndHandler = () => {
+    setIsAnim(false);
+    console.log('Animation end');
+  };
+
+  return (
+    <div>
+      <button type="button" onClick={clickHandler}>
+        Click
+      </button>
+      <Coin
+        isHead={true}
+        isAnimation={isAnim}
+        animationEndHandler={animationEndHandler}
+      />
+    </div>
+  );
+};
+
+export default Component;
+```

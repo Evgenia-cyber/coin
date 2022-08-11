@@ -13,13 +13,21 @@ export interface Props {
   animationEndHandler: () => void;
   diameter?: number;
 }
-const Coin: FC<Props> = ({ isHead, isAnimation, animationEndHandler, diameter }) => {
+const Coin: FC<Props> = ({
+  isHead,
+  isAnimation,
+  animationEndHandler,
+  diameter,
+}) => {
   React.useEffect(() => {
     if (diameter) {
-      document.documentElement.style.setProperty("--coin-diameter", `${diameter}px`);
+      document.documentElement.style.setProperty(
+        '--coin-diameter',
+        `${diameter}px`
+      );
     }
-  }, []);
-  
+  }, [diameter]);
+
   const positions = isHead ? HEAD : TAIL;
 
   const classNames = isAnimation ? 'coin coin__anim' : 'coin';
